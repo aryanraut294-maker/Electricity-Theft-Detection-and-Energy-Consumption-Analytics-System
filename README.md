@@ -87,6 +87,38 @@ The dataset contains the following fields:
 - Dynamic charts and graphs
 - Interactive tables and visual reports
 
+## Business Problem Statement
+
+Electricity providers often face challenges in monitoring consumer usage patterns, detecting electricity theft, tracking unpaid bills, and understanding revenue performance across different areas and districts.
+
+Manual analysis of large electricity datasets becomes time-consuming and may lead to delays in identifying suspicious activities and business opportunities.
+
+This project addresses these challenges by analyzing electricity consumption and consumer behavior data using SQL and Power BI.
+
+---
+
+## Problems Solved
+
+- Identified suspicious consumers with possible electricity theft activity
+- Detected high consumption but unusually low billing cases
+- Monitored unpaid and pending consumer payments
+- Analyzed district-wise revenue generation
+- Studied consumer electricity usage patterns
+- Compared performance across areas and connection types
+- Tracked billing and consumption trends over time
+
+---
+
+## Business Impact and Benefits
+
+- Helps reduce revenue loss caused by electricity theft
+- Supports faster identification of suspicious consumers
+- Improves billing and payment monitoring
+- Helps optimize electricity distribution planning
+- Enables data-driven decision making
+- Improves operational efficiency through analytics
+- Helps authorities focus on high-risk districts and consumers
+
 ##Screenshort
 
 ##Dashbord 1
