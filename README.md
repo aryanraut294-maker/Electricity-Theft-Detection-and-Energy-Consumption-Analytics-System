@@ -94,3 +94,5 @@ https://github.com/aryanraut294-maker/Electricity-Theft-Detection-and-Energy-Con
 
 ##Dashbord 2
 https://github.com/aryanraut294-maker/Electricity-Theft-Detection-and-Energy-Consumption-Analytics-System/blob/main/Dashboard_2_Billing_Analysis.png
+
+##Dashbord 3 https://github.com/aryanraut294-maker/Electricity-Theft-Detection-and-Energy-Consumption-Analytics-System/blob/main/Dashboard_3_Fraud_Analysis.png
