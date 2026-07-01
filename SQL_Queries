@@ -1,0 +1,209 @@
+use electricity_data;
+
+-- 1 Total no of cunsumers in data ?
+SELECT 
+    *
+FROM
+    electricity_data.maharashtra_electricity_analytics_synthetic_data;
+SELECT 
+    COUNT(*)
+FROM
+    consumer_id;
+    
+-- 2 list of district avalble in data ?
+SELECT 
+    district
+FROM
+    maharashtra_electricity_analytics_synthetic_data;
+
+-- 3 Count consumers in each dietrict ?
+SELECT 
+    district, COUNT(*) consumer_id
+FROM
+    maharashtra_electricity_analytics_synthetic_data
+GROUP BY District;
+
+-- 4 Total electricity unit consumed per month?
+SELECT 
+    Month, SUM(units_consumed)
+FROM
+    maharashtra_electricity_analytics_synthetic_data
+GROUP BY Month;
+
+-- 5 Average bill amount per month?
+SELECT 
+    Month, AVG(bill_Amount)
+FROM
+    maharashtra_electricity_analytics_synthetic_data
+GROUP BY month;
+
+-- 6 Average bill amount per area ?
+SELECT 
+    area, AVG(bill_amount)
+FROM
+    maharashtra_electricity_analytics_synthetic_data
+GROUP BY area;
+
+-- 7 Higest electricity consumption costumer?
+SELECT 
+    *
+FROM
+    maharashtra_electricity_analytics_synthetic_data
+ORDER BY Units_Consumed DESC
+LIMIT 3;
+
+-- 8 Total revenue genrated (bill amount)?
+SELECT 
+    SUM(bill_amount) AS revenue
+FROM
+    maharashtra_electricity_analytics_synthetic_data;
+    
+-- 9 Average bill by connection type ?
+SELECT 
+    SUM(bill_amount)
+FROM
+    maharashtra_electricity_analytics_synthetic_data
+GROUP BY Connection_Type;
+
+-- 10 Which month has higest total billing ?
+select month, sum(bill_amount)
+from maharashtra_electricity_analytics_synthetic_data
+group by month
+order by sum(Bill_Amount) desc
+limit 5 ;
+
+-- 11 Count paid vs unpaid consumers?
+SELECT 
+    payment_status, COUNT(consumer_id)
+FROM
+    maharashtra_electricity_analytics_synthetic_data
+GROUP BY Payment_Status;
+
+-- 12 Total pending bill amount ?
+SELECT 
+    payment_status, COUNT(*)
+FROM
+    maharashtra_electricity_analytics_synthetic_data
+WHERE
+    Payment_Status = 'Pending';
+
+-- 13 Total suspicious consumers details ?
+SELECT 
+    Suspicious_Flag
+FROM
+    maharashtra_electricity_analytics_synthetic_data
+WHERE
+    Suspicious_Flag = '1';
+    
+-- 14 list fo suspicious consumers ?
+SELECT 
+    *
+FROM
+    maharashtra_electricity_analytics_synthetic_data
+WHERE
+    Suspicious_Flag = '1';
+    
+-- 15 District wise suspicious cases ?
+SELECT 
+    district, COUNT(*)
+FROM
+    maharashtra_electricity_analytics_synthetic_data
+WHERE
+    Suspicious_Flag = '1'
+GROUP BY District;
+
+-- 16 High use but low bill case ?
+SELECT 
+    *
+FROM
+    maharashtra_electricity_analytics_synthetic_data
+WHERE
+    Units_Consumed > 3000
+        AND Bill_Amount < 2000;
+        
+-- 17 Area with higest meter reading ?
+SELECT 
+    area, AVG(meter_reading)
+FROM
+    maharashtra_electricity_analytics_synthetic_data
+GROUP BY area
+ORDER BY AVG(Meter_Reading) DESC;
+
+-- 18 Which district has higest average electricity use per consumption ?
+SELECT 
+    district, AVG(Units_consumed)
+FROM
+    maharashtra_electricity_analytics_synthetic_data
+GROUP BY District
+ORDER BY AVG(Units_Consumed) DESC;
+
+-- 19 Which connection type contribute the higest electricity consumption ?
+SELECT 
+    connection_type, SUM(Units_consumed) AS consumption
+FROM
+    maharashtra_electricity_analytics_synthetic_data
+GROUP BY Connection_Type
+ORDER BY consumption DESC;
+
+-- 20 Top 5 consumer with higest reading ?
+SELECT 
+    *
+FROM
+    maharashtra_electricity_analytics_synthetic_data
+ORDER BY Meter_Reading DESC
+LIMIT 5; 
+
+-- 21 Which area has most unpaid consumers ?
+SELECT 
+    area, COUNT(*) AS unpaid_consumer
+FROM
+    maharashtra_electricity_analytics_synthetic_data
+WHERE
+    Payment_Status = 'pending'
+GROUP BY area
+ORDER BY unpaid_consumer DESC;
+
+-- 22 percentage of suspicious cnsumer in each district ?
+SELECT 
+    district,
+    ROUND((COUNT(CASE
+                WHEN suspicious_flag = 1 THEN 1
+            END) * 100.0) / COUNT(*),
+            2) AS suspicious_percentage
+FROM
+    maharashtra_electricity_analytics_synthetic_data
+GROUP BY District;
+
+-- 23 Find consumer whose bill amount is overaverage ?
+SELECT 
+    consumer_id, bill_amount
+FROM
+    maharashtra_electricity_analytics_synthetic_data
+WHERE
+    bill_amount > (SELECT 
+            AVG(Bill_Amount)
+        FROM
+            maharashtra_electricity_analytics_synthetic_data);
+            
+-- 24 Which connection type has the average bill per  unit conwsumed ?
+SELECT 
+    connection_type,
+    AVG(bill_amount / Units_Consumed) AS avgcost_per_unit
+FROM
+    maharashtra_electricity_analytics_synthetic_data
+GROUP BY Connection_Type
+ORDER BY avgcost_per_unit DESC;
+
+-- 25 Find district wher total bill connection exceed 50000 ?
+SELECT 
+    district, SUM(bill_amount) AS total_connection
+FROM
+    maharashtra_electricity_analytics_synthetic_data
+GROUP BY District
+HAVING SUM(bill_amount) > 50000;
+
+-- 26 suspicious consumer detail 
+ select* 
+ from maharashtra_electricity_analytics_synthetic_data
+ where suspicious_flag = "1" ;
+ 
