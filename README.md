@@ -89,4 +89,8 @@ The dataset contains the following fields:
 
 ##Screenshort
 
+##Dashbord 1
+https://github.com/aryanraut294-maker/Electricity-Theft-Detection-and-Energy-Consumption-Analytics-System/blob/main/Dashboard_1_Overview.
+
+##Dashbord 2
 https://github.com/aryanraut294-maker/Electricity-Theft-Detection-and-Energy-Consumption-Analytics-System/blob/main/Dashboard_2_Billing_Analysis.png
